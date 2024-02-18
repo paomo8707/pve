@@ -677,8 +677,10 @@ cat > $tmpf << 'EOF'
               const c1 = value.match(/Core 1.*?\+([\d\.]+)?/)[1];  // CPU核心2温度
               const c2 = value.match(/Core 2.*?\+([\d\.]+)?/)[1];  // CPU核心3温度
               const c3 = value.match(/Core 3.*?\+([\d\.]+)?/)[1];  // CPU核心4温度
+	      const c4 = value.match(/Core 3.*?\+([\d\.]+)?/)[1];  // CPU核心5温度
+              const c5 = value.match(/Core 3.*?\+([\d\.]+)?/)[1];  // CPU核心6温度
               const b0 = value.match(/temp1.*?\+([\d\.]+)?/)[1];  // 主板温度
-              return ` 核心1: ${c0} ℃ | 核心2: ${c1} ℃ | 核心3: ${c2} ℃ | 核心4: ${c3} ℃ || 主板: ${b0} ℃ `
+              return ` 核心1: ${c0} ℃ | 核心2: ${c1} ℃ | 核心3: ${c2} ℃ | 核心4: ${c3} ℃ | 核心5: ${c4} ℃ | 核心6: ${c5} ℃ || 主板: ${b0} ℃ `
             }
     },
 
@@ -695,7 +697,9 @@ cat > $tmpf << 'EOF'
 			  const e1 = value.split('\n')[1].split(' ')[2];
 			  const e2 = value.split('\n')[2].split(' ')[2];
 			  const e3 = value.split('\n')[3].split(' ')[2];
-			  return `核心1: ${e0} MHz | 核心2: ${e1} MHz | 核心3: ${e2} MHz | 核心4: ${e3} MHz `
+                          const e4 = value.split('\n')[0].split(' ')[2];
+			  const e5 = value.split('\n')[0].split(' ')[2];
+			  return `核心1: ${e0} MHz | 核心2: ${e1} MHz | 核心3: ${e2} MHz | 核心4: ${e3} MHz | 核心5: ${e4} MHz | 核心6: ${e5} MHz `
             }
 	},
 
