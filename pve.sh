@@ -613,8 +613,7 @@ cat > $tmpf << 'EOF'
 	
 	$res->{hdd_temperatures} = `smartctl -a /dev/sd?|grep -E "Device Model|Capacity|Power_On_Hours|Temperature"`;
 
-	my $powermode = `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor && turbostat -S -q -s PkgWatt -i 0.1 -n 1 -c package | grep -v PkgWatt`;
-	$res->{cpupower} = $powermode;
+	
 
 EOF
 
@@ -637,19 +636,6 @@ rm $tmpf
 tmpf=tmpfile.temp
 touch $tmpf
 cat > $tmpf << 'EOF'
-
-	{
-          itemId: 'CPUW',
-          colspan: 2,
-          printBar: false,
-          title: gettext('CPU功耗'),
-          textField: 'cpupower',
-          renderer:function(value){
-			  const w0 = value.split('\n')[0].split(' ')[0];
-			  const w1 = value.split('\n')[1].split(' ')[0];
-			  return `CPU电源模式: ${w0} | CPU功耗: ${w1} W `
-            }
-	},
 
 	{
           itemId: 'MHz',
